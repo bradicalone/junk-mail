@@ -1,0 +1,302 @@
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #080033;
+
+}
+
+.btn{
+    position: absolute;
+    bottom : 100px;
+    left: 50%;
+}
+
+.canvas {
+     /*background: #080033;*/
+    /*background: #c9edfd;*/
+}
+
+
+.formContainer {
+	position: relative;
+    display: inline-block;
+    height: 70px;
+    width: calc(100% - 400px);
+    max-width: 800px;
+    min-width: 400px;
+}
+
+.formContainer form{
+	width: 100%;
+	height: 70px;
+
+}
+
+.runner-wrap{
+    position: absolute;
+    top: 0;
+    width: calc(100% - 175px);
+    height: 70px;
+     z-index: -1;
+     overflow: hidden;
+
+}
+
+
+.text-men{
+    display: inline-flex;
+    position: absolute;
+    font-size: 22px;
+    font-weight: 700;
+    padding-left: 20px;
+}
+
+.runners {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+	position: relative;
+    width: 12px;
+    bottom: 0;
+}
+
+.runners img {
+    /*display: none;*/
+    will-change:transform;
+    position: absolute;
+    left: -4px;
+    bottom: 2px;
+    width:20px;   
+}
+
+.bounce {
+    will-change:transform;
+    animation: bounce .1s ease-in-out .05s  alternate infinite forwards running;
+}
+
+@keyframes bounce{
+    0%{
+        transform: translate(0px,0px) rotate(0deg);
+    }
+    100%{
+        transform: translate(0px,7px) rotate(0deg);
+    }
+}
+
+.running {
+    will-change:transform;
+    animation: moveForward 2.8s 1 forwards;
+    animation-timing-function: cubic-bezier(1, -.12, 1, .98);
+}
+.running:nth-of-type(2n){
+    animation-duration: 2.3s;
+}
+.running:nth-of-type(3n){
+    animation-duration: 2.8s;
+}
+.running:nth-of-type(5n){
+    animation-duration: 2.0s;
+}
+.running:nth-of-type(4n){
+    animation-duration: 1.8s;
+}
+
+
+@keyframes moveForward{
+    to{
+        transform: translate(2000px,0px) rotate(0deg)
+    }
+}
+
+
+.right-leg {
+    will-change:transform;
+    transform-origin: center center;
+    animation: rightLegRun .1s ease-in-out 0s alternate infinite both running;
+
+}
+
+
+.left-leg {  
+    will-change:transform; 
+    animation: leftLegRun .1s ease-in-out 0s alternate infinite both running;
+}
+
+@keyframes leftLegRun{
+    0%{
+        transform: translate(10px,0px) rotate(-62deg);
+        
+    }
+    100%{
+        transform: translate(-3px,0px) rotate(25deg);
+       
+        
+    
+    }
+}
+
+@keyframes rightLegRun{
+    0%{
+        transform: translate(-8px,0px) rotate(57deg);
+       
+    }
+    100%{
+        
+        transform: translate(7px,0px) rotate(-35deg);
+       
+    }
+}
+
+
+.formContainer form input {
+	max-height: 70px;
+    height: 70px;
+    width: calc(100% - 175px);
+    border-radius: 80px 0 0 80px;
+    border: none;
+    font-size: 22px;
+    font-weight: 700;
+    padding-left: 20px;
+    box-sizing: border-box;
+    font-family: "Varela Round";
+}
+
+
+
+.formContainer form input:focus {
+	outline: none;
+}
+
+button[type="submit"] {
+    position: absolute;
+    right: 0;
+	border-radius: 0px 20px 20px 0px;
+	cursor: pointer;
+	height: 70px;
+    top: 0;
+	width: 175px;
+	border: none;
+	padding: 0;
+    font: 500 22px system-ui;
+    color: initial;
+    background: linear-gradient(to bottom, rgba(105,147,254,1) 0%,rgba(41,137,216,1) 27%,rgba(0,59,231,1) 100%)
+}
+
+button[type="submit"]:focus {
+	outline: none;
+}
+
+
+.textNode {
+    text-align: center;
+    position: relative;
+    color: black;
+    font-family: "Varela Round";
+}
+
+.drain {
+    top: -4px;
+    position: absolute;
+    z-index: 0;
+    width: 78px;
+    height: 78px;
+    transform: scale(.9);
+}
+
+.down-drain {
+    z-index: 1;
+    animation: downDrain 1s 0s 1 forwards
+}
+
+@keyframes downDrain {
+    0%{
+        transform: translate3d(0px, 0, 0) scale(.9);
+    }
+    10%{
+        transform: translate3d(10px, 0, 0) scale(1);
+    }
+    40%{
+        transform: translate3d(50px, 0, 0) scale(1.1);
+    }
+    90%{
+        transform: translate3d(90px, 0, 0) scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: translate3d(116px, 0, 0) scale(.9) scaleX(.6);
+        /*opacity: 0;*/
+    }
+}
+
+.trash-can {
+	position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    height: 70px;
+    opacity: 1;
+}
+
+.trash-lid {
+    display: none;
+    position: absolute;
+    right: 177px;
+    top: 0;
+    z-index: 1;
+    height: 70px;
+    opacity: 1;
+}
+
+.lid-rotate {
+    display: block !important;
+    animation: lidRotate 2s .4s 1 forwards;
+    transform-origin: top right;
+}
+
+@keyframes lidRotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    10%{
+        transform: rotate(145deg);
+    }
+    90%{
+        transform: rotate(145deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+.circle {
+    top: 25px;
+    position: absolute;
+  width: 650px;
+  height: 235px;
+}
+
+.circle circle {
+
+  fill: turquoise;
+} 
+
+.circle path {
+  fill: none;
+}
+
+@media(max-width: 768px){
+
+}
+
+
+
+
+
+
+/*dark blue#003BE7: light blue:#6993FE*/
